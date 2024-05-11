@@ -1,10 +1,10 @@
-package com.yourcaryourwaychat;
+package com.poc.websocket;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class YourcarYourwayChatApplicationTests {
+class ChatApplicationTests {
 
 	@Test
 	void contextLoads() {

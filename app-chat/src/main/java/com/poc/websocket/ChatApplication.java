@@ -1,13 +1,13 @@
-package com.yourcaryourwaychat;
+package com.poc.websocket;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class YourcarYourwayChatApplication {
+public class ChatApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(YourcarYourwayChatApplication.class, args);
+		SpringApplication.run(ChatApplication.class, args);
 	}
 
 }
