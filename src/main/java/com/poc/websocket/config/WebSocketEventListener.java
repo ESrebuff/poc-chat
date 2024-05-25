@@ -23,10 +23,12 @@ public class WebSocketEventListener {
         String username = (String) headerAccessor.getSessionAttributes().get("username");
         if (username != null) {
             log.info("user disconnected: {}", username);
+            // Create a new chat message of type LEAVE
             var chatMessage = ChatMessage.builder()
                     .type(MessageType.LEAVE)
                     .sender(username)
                     .build();
+            // Send the message to all subscribers of the topic "/topic/public"
             messagingTemplate.convertAndSend("/topic/public", chatMessage);
         }
     }

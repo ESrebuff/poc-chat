@@ -11,22 +11,21 @@ public class ChatController {
 
     // Method to handle sending messages. It listens on the "/chat.sendMessage" endpoint.
     @MessageMapping("/chat.sendMessage")
-    @SendTo("/topic/public") // Sends the return value of this method to the "/topic/public".
+    @SendTo("/topic/public") // Broadcast the return value to all subscribers of "/topic/public"
     public ChatMessage sendMessage(
             @Payload ChatMessage chatMessage
     ) {
-        return chatMessage; // Returns the message to be broadcast to subscribed clients.
+        return chatMessage;
     }
 
     // Method to add a new user to the chat session.
     @MessageMapping("/chat.addUser")
-    @SendTo("/topic/public") // Sends the return value to the "/topic/public" topic.
+    @SendTo("/topic/public") // Broadcast the return value to all subscribers of "/topic/public"
     public ChatMessage addUser(
-        // Adds username to the WebSocket session.
             @Payload ChatMessage chatMessage,
             SimpMessageHeaderAccessor headerAccessor
     ) {
-        // Add username in web socket session
+        // Add the username to the WebSocket session attributes
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
         return chatMessage;
     }
